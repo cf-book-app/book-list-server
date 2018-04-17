@@ -9,6 +9,9 @@ const client = new pg.Client(process.env.DATABASE_URL);
 client.connect();
 app.use(cors());
 
+app.get('/ping', (req, res) => {
+    res.send('pong');
+});
 app.get('/api/v1/books', (req, res) => {
     client.query(`
         SELECT * FROM books;
